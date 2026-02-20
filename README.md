@@ -1,2 +1,3 @@
-# div
-Hy My Name is Divyansh
+# MindMitra
+
+AI-powered mental wellness support app for youth built with Flutter + Provider.
