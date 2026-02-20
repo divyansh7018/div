@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Today\'s mood: ${mood?.emoji ?? 'Not set'}'),
+              Flexible(child: Text('Today\'s mood: ${mood?.emoji ?? 'Not set'}')),
               TweenAnimationBuilder<double>(
                 tween: Tween(begin: 0.9, end: 1.1),
                 duration: const Duration(milliseconds: 800),
