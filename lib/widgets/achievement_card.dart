@@ -1,0 +1,3 @@
+import 'package:flutter/material.dart';
+import '../models/achievement.dart';
+class AchievementCard extends StatelessWidget { const AchievementCard({required this.achievement, super.key}); final Achievement achievement; @override Widget build(BuildContext context) => Card(child: ListTile(leading: CircleAvatar(backgroundColor: achievement.unlocked ? Colors.amber : Colors.white10, child: Text(achievement.icon)), title: Text(achievement.title), subtitle: Text(achievement.description), trailing: Icon(achievement.unlocked ? Icons.verified : Icons.lock, color: achievement.unlocked ? Colors.amber : Colors.white38))); }

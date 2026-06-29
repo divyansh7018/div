@@ -1,0 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/app_state_provider.dart';
+import '../widgets/achievement_card.dart';
+import '../widgets/custom_app_bar.dart';
+import '../widgets/progress_chart.dart';
+import '../widgets/stat_card.dart';
+class ProgressScreen extends StatelessWidget { const ProgressScreen({super.key}); @override Widget build(BuildContext context) { final app = context.watch<AppStateProvider>(); final latest = app.history.last; return Scaffold(appBar: const CustomAppBar(title: 'Progress', subtitle: 'Weekly and monthly transformation'), body: ListView(padding: const EdgeInsets.all(16), children: [ProgressChart(entries: app.history), GridView.count(crossAxisCount: MediaQuery.sizeOf(context).width > 700 ? 4 : 2, shrinkWrap: true, physics: const NeverScrollableScrollPhysics(), children: [StatCard(title: 'Chest', value: '${latest.chest.toStringAsFixed(1)} cm', icon: Icons.accessibility_new), StatCard(title: 'Arms', value: '${latest.arms.toStringAsFixed(1)} cm', icon: Icons.fitness_center), StatCard(title: 'Waist', value: '${latest.waist.toStringAsFixed(1)} cm', icon: Icons.straighten), StatCard(title: 'Legs', value: '${latest.legs.toStringAsFixed(1)} cm', icon: Icons.directions_run)]), const Card(child: ListTile(leading: Icon(Icons.photo_camera, color: Colors.amber), title: Text('Transformation Photos'), subtitle: Text('Add front, side, and back photos using the image picker in profile backup flow.'))), const SizedBox(height: 12), const Text('Achievements', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)), ...app.achievements().map((a) => AchievementCard(achievement: a))])); } }

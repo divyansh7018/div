@@ -1,0 +1,4 @@
+import 'package:flutter/material.dart';
+import '../models/meal.dart';
+class MealCard extends StatelessWidget { const MealCard({required this.meal, required this.completed, required this.onChanged, super.key}); final Meal meal; final bool completed; final ValueChanged<bool?> onChanged; @override Widget build(BuildContext context) => Card(child: ExpansionTile(leading: const Icon(Icons.restaurant, color: Colors.amber), title: Text(meal.name), subtitle: Text('${meal.time} • ${meal.calories} kcal • ${meal.protein.toStringAsFixed(0)}g protein'), trailing: Checkbox(value: completed, onChanged: onChanged), children: [Padding(padding: const EdgeInsets.all(16), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(meal.items.join(' • ')), const SizedBox(height: 8), Text('Carbs ${meal.carbs}g  •  Fat ${meal.fat}g')]))])); }
+}
